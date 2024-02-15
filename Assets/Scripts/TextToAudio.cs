@@ -1,3 +1,4 @@
+using System;
 using Managers;
 using Services;
 using Sirenix.OdinInspector;
@@ -7,6 +8,7 @@ using Zenject;
 public class TextToAudio : MonoBehaviour
 {
     [SerializeField] [TextArea] private string text;
+    [SerializeField] private bool isPlayer;
     [SerializeField] private int speakerId;
     [SerializeField] private string textId;
     [SerializeField] private bool isLoaded;
@@ -21,10 +23,16 @@ public class TextToAudio : MonoBehaviour
         _audioManager = audioManager;
         _audioSource = GetComponent<AudioSource>();
     }
-    
-    public void SetText(string newText)
+
+    private void Awake()
     {
-        text = newText;
+        text = text.Contains("<player_name>") ? text.Replace("<player_name>", PlayerService.PlayerName) : text;
+        speakerId = !isPlayer?speakerId:PlayerService.PlayerSex;
+    }
+
+    public void ReplaceText(string required, string newValue)
+    {
+        text = text.Contains(required) ? text.Replace(required, newValue) : text;
     }
     
     [Button]
