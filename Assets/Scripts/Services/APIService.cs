@@ -3,7 +3,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using Newtonsoft.Json;
-using StarterAssets.Services;
+using Services;
 using UnityEngine.Networking;
 
 public static class APIService

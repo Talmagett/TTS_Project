@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace StarterAssets.Services
+namespace Services
 {
     public static class FileLoader
     {
