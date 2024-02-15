@@ -6,9 +6,10 @@ namespace Managers
     {
         [SerializeField] private AudioSource audioSource;
 
-        public void PlaySound(AudioClip clip, Vector3 point)
+        public void PlaySoundOnCamera(AudioClip clip)
         {
-            
+            audioSource.clip = clip;
+            audioSource.Play();
         }
     }
 }
