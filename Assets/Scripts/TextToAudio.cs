@@ -11,13 +11,15 @@ public class TextToAudio : MonoBehaviour
     [SerializeField] private string textId;
     [SerializeField] private bool isLoaded;
     [SerializeField] private bool playAudioOnCamera;
-
+    private AudioSource _audioSource;
+    
     private AudioManager _audioManager;
     
     [Inject]
     public void Construct(AudioManager audioManager)
     {
         _audioManager = audioManager;
+        _audioSource = GetComponent<AudioSource>();
     }
     
     public void SetText(string newText)
@@ -37,9 +39,14 @@ public class TextToAudio : MonoBehaviour
             await APIService.SendRequest(text, speakerId, textId);
 
         var clip = await FileLoader.LoadFile(textId);
-        if(playAudioOnCamera)
+        if (playAudioOnCamera)
+        {
             _audioManager.PlaySoundOnCamera(clip);
+        }
         else
-            AudioSource.PlayClipAtPoint(clip, transform.position);
+        {
+            _audioSource.clip=clip;
+            _audioSource.Play();
+        }
     }
 }
