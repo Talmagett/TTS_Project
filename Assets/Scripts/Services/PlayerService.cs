@@ -2,8 +2,8 @@ namespace Services
 {
     public static class PlayerService
     {
-        public static string PlayerName { get; set; }
-        public static int PlayerSex { get; set; }
+        public static string PlayerName { get; set; } = "Асан";
+        public static int PlayerSex { get; set; }=1;
 
         private enum Sex
         {
