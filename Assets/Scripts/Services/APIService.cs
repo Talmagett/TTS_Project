@@ -74,8 +74,10 @@ public static class APIService
 
         if (code == "0")
             return null;
-
+        
+#if  UNITY_EDITOR
         UnityEditor.AssetDatabase.Refresh();
+#endif
         
         var returningData = new RequestResult
         {

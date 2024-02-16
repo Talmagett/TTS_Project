@@ -2,3 +2,8 @@ synty horror
 synty prototype
 textmeshpro
 MMF
+epicToonFx
+JmoAssets
+basic motions
+synty knights
+synty samurai
